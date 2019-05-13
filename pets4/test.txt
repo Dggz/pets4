@@ -1,0 +1,6 @@
+coat1,size1,10,coat1.jpg
+coat2,size2,15,coat2.jpg
+coat3,size1,4,coat3.jpg
+coat4,size4,60,coat4.jpg
+coat5,size2,100,coat5.jpg
+coat6,size2,55,coat6.jpg
