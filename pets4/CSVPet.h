@@ -14,6 +14,7 @@ public:
 		this->set_vaccines(normal.get_vaccines());
 		this->set_photograph(normal.get_photograph());
 	}
+
 	friend std::istream& operator>>(std::istream& is, CSVPet& coat);
 	friend std::ostream& operator<<(std::ostream& os, const CSVPet& coat);
 
