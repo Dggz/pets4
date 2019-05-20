@@ -76,16 +76,18 @@ std::string Pet::get_line() const
 	{
 		return this->name;
 	}
-	string trench_coat;
-	trench_coat = this->name;
-	trench_coat += " | ";
-	trench_coat += this->breed;
-	trench_coat += " | ";
-	trench_coat += std::to_string(this->vaccines);
-	trench_coat += " | ";
-	trench_coat += this->photograph;
-	trench_coat += "\n";
-	return trench_coat;
+	string pet;
+	pet = this->name;
+	pet += " | ";
+	pet += this->breed;
+	pet += " | ";
+	pet += this->birthDate;
+	pet += " | ";
+	pet += std::to_string(this->vaccines);
+	pet += " | ";
+	pet += this->photograph;
+	pet += "\n";
+	return pet;
 }
 Pet::~Pet()
 {

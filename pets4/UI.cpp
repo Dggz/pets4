@@ -1,6 +1,6 @@
 #include "UI.h"
 #include <string>
-
+#include <iostream>
 
 UI::UI(Service* service)
 {
@@ -11,19 +11,21 @@ UI::UI(Service* service)
 UI::~UI()
 {
 }
-//runs the program technically
+
 void UI::run()
 {
 	std::vector<Pet> returned;
 	char* input = new char[200];
 	int i = 1;
+
+	std::cout << "\nModes: mode A, mode B\n";
 	while (i == 1) {
 		try 
 		{
 			fgets(input, 200, stdin);
 			returned = this->service->parse_arguments(input, i);
 			for (auto pet : returned)
-				printf("%s", pet.get_line().c_str());
+				std::cout << pet.get_line();
 		}
 		catch (RepositoryError e)
 		{

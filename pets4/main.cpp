@@ -7,11 +7,9 @@
 
 int main()
 {
-	
 	/*
 	Test test;
-	test.testAll();
-	*/
+	test.testAll();*/
 
 
 	Repository* repo = new Repository(); //creates the repository

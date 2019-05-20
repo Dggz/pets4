@@ -1,7 +1,5 @@
 #pragma once
 #include "Repository.h"
-#include "CSVRepository.h"
-#include "HTMLRepository.h"
 #include "Validator.h"
 class Service
 {
@@ -13,7 +11,7 @@ private:
 	std::vector<Pet>::iterator iterator;
 	std::vector<Pet> iterated_elements;
 	Repository* user_list;
-	void innit_user_mode();
+	void start_user_mode();
 	Repository* repository;
 	Validator* validator;
 	std::vector<std::string> cut_into_words(std::string line);

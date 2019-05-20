@@ -1,7 +1,5 @@
 #include "CSVPet.h"
 
-
-
 CSVPet::CSVPet()
 {
 	
@@ -11,16 +9,15 @@ CSVPet::CSVPet(std::string name, std::string breed, std::string birthDate, int v
 {
 }
 
-
 CSVPet::~CSVPet()
 {
 }
 
-std::istream & operator>>(std::istream & is, CSVPet & pet)
+std::istream & operator>>(std::istream & input, CSVPet & cpet)
 {
 	// TODO: insert return statement here
 	std::string line;
-	getline(is, line);
+	getline(input, line);
 
 	std::vector<std::string> tokens;
 	std::stringstream ss(line);
@@ -28,17 +25,17 @@ std::istream & operator>>(std::istream & is, CSVPet & pet)
 	while (getline(ss, token, ','))
 		tokens.push_back(token);
 	if (tokens.size() != 4)
-		return is;
-	pet.set_name(tokens[0]);
-	pet.set_breed(tokens[1]);
-	pet.set_vaccines(std::stoi(tokens[2]));
-	pet.set_photograph(tokens[3]);
-	return is;
+		return input;
+	cpet.set_name(tokens[0]);
+	cpet.set_breed(tokens[1]);
+	cpet.set_date(tokens[2]);
+	cpet.set_vaccines(std::stoi(tokens[3]));
+	cpet.set_photograph(tokens[4]);
+	return input;
 }
 
-std::ostream & operator<<(std::ostream & os, const CSVPet & pet)
+std::ostream & operator<<(std::ostream & output, const CSVPet & pet)
 {
-	// TODO: insert return statement here
-	os << pet.get_name() << "," << pet.get_breed() << "," << pet.get_vaccines() << "," << pet.get_photograph() << "\n";
-	return os;
+	output << pet.get_name() << "," << pet.get_breed() << "," << pet.get_vaccines() << "," << pet.get_photograph() << "\n";
+	return output;
 }

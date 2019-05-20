@@ -1,4 +1,6 @@
 #include "Service.h"
+#include "CSVRepository.h"
+#include "HTMLRepository.h"
 #include "Repository.h"
 #include <string>
 #include "Pet.h"
@@ -48,7 +50,7 @@ std::vector<Pet> Service::admin_mode(std::vector<std::string> user_input)
 }
 //decides what to do and in which mode
 
-void Service::innit_user_mode()
+void Service::start_user_mode()
 {
 	this->iterated_elements = this->repository->get_elements();
 	this->iterator = this->iterated_elements.begin();
@@ -132,8 +134,8 @@ std::vector<Pet> Service::user_mode(std::vector<std::string> user_input)
 		throw std::exception("Invalid name!");}
 	if (!user_input[0].compare("list"))
 	{
-		int vaccines = std::stoi(user_input[2]);
 		std::string breed = user_input[1];
+		int vaccines = std::stoi(user_input[2]);
 		std::vector<Pet> elements = this->repository->get_elements();
 		for (auto pet : elements)
 			if (pet.get_vaccines() < vaccines && !breed.compare(pet.get_breed().c_str()))
@@ -142,12 +144,14 @@ std::vector<Pet> Service::user_mode(std::vector<std::string> user_input)
 			}
 		return empty_return;
 	}
+	return empty_return;
 }
+
 std::vector<Pet> Service::parse_arguments(std::string command_line, int &stop_condition)
 {
 	std::vector<Pet> empty_return;
 	std::vector<std::string> tokens = this->cut_into_words(command_line);
-		
+	
 	if (!tokens[0].compare("exit"))
 	{
 		stop_condition = 0;
@@ -161,7 +165,7 @@ std::vector<Pet> Service::parse_arguments(std::string command_line, int &stop_co
 			this->mode = 0;
 		if (!tokens[1].compare("B"))
 		{
-			this->mode = 1, this->innit_user_mode();
+			this->mode = 1, this->start_user_mode();
 		}
 	}
 	else if (!tokens[0].compare("fileLocation"))
